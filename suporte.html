@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suporte — Lokr+</title>
+<meta name="description" content="Perguntas frequentes e contato do Lokr+.">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/legal.css">
+</head>
+<body>
+<header class="site-header" data-site-header></header>
+
+<main>
+  <section class="legal-hero wrap">
+    <h1 class="h-section" data-s-title></h1>
+    <p class="body-text" data-s-subtitle></p>
+  </section>
+  <section class="support-layout wrap">
+    <div class="contact-card">
+      <h3 data-s-contact-title></h3>
+      <p data-s-contact-body></p>
+      <a class="btn-primary" href="mailto:lokr.security.support@gmail.com" data-s-contact-button></a>
+    </div>
+    <div class="faq-list" data-s-faq></div>
+  </section>
+</main>
+
+<footer class="site-footer" data-site-footer></footer>
+
+<script src="js/i18n.js"></script>
+<script src="js/i18n-legal.js"></script>
+<script src="js/site.js"></script>
+<script src="js/page-legal.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { window.LokrSite.init("suporte"); window.LokrPageLegal.renderSupport(); });</script>
+</body>
+</html>
