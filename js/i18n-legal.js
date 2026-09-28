@@ -47,7 +47,11 @@ window.LOKR_I18N_LEGAL = {
           p: "O Lokr+ nunca vende nem compartilha dados pessoais com terceiros — não há dados pessoais nos nossos servidores para vender, porque não existe servidor guardando os seus dados. Se você é residente da Califórnia, tem direito de saber quais informações são coletadas (nenhuma, além do que você mesmo nos envia por e-mail ao pedir suporte), de pedir a exclusão delas e de não sofrer discriminação por exercer esses direitos. Como não coletamos nem vendemos informação pessoal, essas garantias já estão atendidas por padrão; para qualquer pedido formal, escreva para lokr.security.support@gmail.com."
         },
         {
-          h: "11. Mudanças e contato",
+          h: "11. Analytics do site (não do app)",
+          p: "Diferente do aplicativo Lokr+ — descrito nas seções anteriores, que não coleta nada — este site institucional (a página que você está lendo agora) usa o Google Analytics para entender visitas: páginas vistas, localização aproximada, tipo de dispositivo e navegador. Isso acontece por meio de cookies, só aqui no site, nunca dentro do aplicativo. Se preferir não ser contabilizado, use um bloqueador de rastreadores ou a extensão de exclusão do Google Analytics (tools.google.com/dlpage/gaoptout)."
+        },
+        {
+          h: "12. Mudanças e contato",
           p: "Se esta política mudar, a data no topo desta página muda junto. Dúvidas, pedidos ou preocupações: lokr.security.support@gmail.com."
         }
       ]
@@ -190,7 +194,11 @@ window.LOKR_I18N_LEGAL = {
           p: "Lokr+ never sells or shares personal data with third parties — there's no personal data on our servers to sell, because there's no server holding your data. If you're a California resident, you have the right to know what information is collected (none, beyond what you send us yourself by email when asking for support), to request its deletion, and to not be discriminated against for exercising these rights. Since we don't collect or sell personal information, these guarantees are already met by default; for any formal request, write to lokr.security.support@gmail.com."
         },
         {
-          h: "11. Changes and contact",
+          h: "11. Site analytics (not the app)",
+          p: "Unlike the Lokr+ app — described in the sections above, which collects nothing — this marketing website (the page you're reading right now) uses Google Analytics to understand visits: pages viewed, approximate location, device and browser type. This happens through cookies, only here on the website, never inside the app. If you'd rather not be counted, use a tracker blocker or Google's own opt-out extension (tools.google.com/dlpage/gaoptout)."
+        },
+        {
+          h: "12. Changes and contact",
           p: "If this policy changes, the date at the top of this page changes with it. Questions, requests, or concerns: lokr.security.support@gmail.com."
         }
       ]
@@ -333,7 +341,11 @@ window.LOKR_I18N_LEGAL = {
           p: "Lokr+ nunca vende ni comparte datos personales con terceros — no hay datos personales en nuestros servidores para vender, porque no existe un servidor que guarde tus datos. Si eres residente de California, tienes derecho a saber qué información se recopila (ninguna, aparte de lo que tú mismo nos envías por correo al pedir soporte), a solicitar su eliminación y a no sufrir discriminación por ejercer estos derechos. Como no recopilamos ni vendemos información personal, estas garantías ya se cumplen por defecto; para cualquier solicitud formal, escribe a lokr.security.support@gmail.com."
         },
         {
-          h: "11. Cambios y contacto",
+          h: "11. Analítica del sitio web (no de la app)",
+          p: "A diferencia de la app Lokr+ — descrita en las secciones anteriores, que no recopila nada —, este sitio web institucional (la página que estás leyendo ahora) usa Google Analytics para entender las visitas: páginas vistas, ubicación aproximada, tipo de dispositivo y navegador. Esto ocurre mediante cookies, solo aquí en el sitio web, nunca dentro de la app. Si prefieres no ser contabilizado, usa un bloqueador de rastreadores o la extensión de exclusión de Google Analytics (tools.google.com/dlpage/gaoptout)."
+        },
+        {
+          h: "12. Cambios y contacto",
           p: "Si esta política cambia, la fecha en la parte superior de esta página cambia con ella. Preguntas, solicitudes o inquietudes: lokr.security.support@gmail.com."
         }
       ]
