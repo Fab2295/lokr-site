@@ -1,6 +1,6 @@
 # Lokr+ — site
 
-Site institucional do Lokr+: uma página com um palco 3D (iPhone em CSS puro, rolagem de 1000vh) seguida de recursos, cofre isca e planos, mais páginas separadas de Privacidade e Suporte. PT/EN/ES, sem build step.
+Site institucional do Lokr+: uma página com um palco 3D (modelo real do iPhone 17 Pro renderizado com Three.js/WebGL, rolagem de 1000vh) seguida de recursos, cofre isca e planos, mais páginas separadas de Privacidade, Termos de Uso e Suporte. PT/EN/ES, sem build step.
 
 ## Rodar localmente
 
@@ -14,15 +14,16 @@ Abra `http://localhost:8843`.
 
 ```
 index.html          página inicial (palco 3D + recursos + cofre isca + planos)
-privacidade.html     política de privacidade (9 seções)
+privacidade.html     política de privacidade (11 seções, incl. RGPD/CCPA)
+termos.html          termos de uso
 suporte.html         FAQ + contato
 css/                 tokens, layout, palco 3D, seções, páginas legais
 js/i18n.js           textos PT/EN/ES do site principal
-js/i18n-legal.js     textos PT/EN/ES de privacidade e suporte
+js/i18n-legal.js     textos PT/EN/ES de privacidade, termos e suporte
 js/site.js           idioma (URL/localStorage/navegador), cabeçalho e rodapé
-js/stage.js          motor do palco 3D orientado por scroll
-js/page-index.js     monta e traduz a página inicial
-js/page-legal.js     monta e traduz privacidade/suporte
+js/page-index.js     monta a página inicial e o motor do palco 3D (Three.js/WebGL)
+js/page-legal.js     monta e traduz privacidade/termos/suporte
+assets/model/         modelo 3D do iPhone 17 Pro (.glb, CC-BY — ver CREDITS.md)
 assets/img/pt, en/   prints do app usados nas telas do iPhone (ES reaproveita EN)
 assets/icon.svg      ícone do app em SVG, pelas coordenadas exatas do spec
 ```
