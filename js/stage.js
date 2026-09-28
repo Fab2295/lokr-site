@@ -3,7 +3,7 @@
   "use strict";
 
   var POSES = [
-    { tx: 0, rx: 58, ry: 0,   rz: -22, scale: 0.62, ty: 20 },   // 0 intro
+    { tx: 0, rx: 32, ry: 0,   rz: -18, scale: 0.66, ty: 20 },   // 0 intro
     { tx: 1, rx: 0,  ry: 0,   rz: 0,   scale: 1,    ty: 0 },    // 1 cofre
     { tx: -1,rx: 0,  ry: 0,   rz: 0,   scale: 1,    ty: 0 },    // 2 gerador
     { tx: 0, rx: 0,  ry: 180, rz: 0,   scale: 0.68, ty: -13 },  // 3 traseira
