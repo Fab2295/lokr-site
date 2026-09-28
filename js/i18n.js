@@ -35,7 +35,7 @@ window.LOKR_I18N = {
       }
     ],
     final: {
-      title: "Pagamento único. Nunca mensalidade.",
+      title: "Pagamento único. Nenhuma mensalidade.",
       body: "O preço aparece na App Store, na sua moeda.",
       button: "Baixar na App Store"
     },
@@ -65,10 +65,10 @@ window.LOKR_I18N = {
         "Apagar tudo após erros e o registro de acessos funcionam igual nos dois cofres."
       ],
       warning: "Ao ativar o cofre isca, Face ID é desligado: com ele, o cofre real abriria pelo seu rosto e passaria por cima do código de coação.",
-      footerLine: "Pagamento único. Nunca mensalidade."
+      footerLine: "Pagamento único. Nenhuma mensalidade."
     },
     planos: {
-      title: "Pagamento único. Nunca mensalidade.",
+      title: "Pagamento único. Nenhuma mensalidade.",
       freeLabel: "Grátis",
       freeSub: "o que você já tem",
       proLabel: "Pro",
