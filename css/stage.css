@@ -201,4 +201,7 @@
 
 @media (max-width: 820px) {
   .stage-legend { display: none; } /* mobile uses stacked static cards, see sections.css */
+  /* Centering the hero vertically left a huge empty gap above it on tall
+     phone viewports; anchor it near the top instead, like the mobile mockup. */
+  .stage-hero { align-items: flex-start; padding-top: 84px; }
 }

@@ -140,12 +140,20 @@
     this.currentScreen = key;
   };
 
-  Stage.prototype._applyTransform = function (pose, vh, vw) {
+  Stage.prototype._applyTransform = function (pose, vh, vw, pastIntro) {
     var txPx = pose.tx * Math.min(250, 0.19 * vw);
     var tyPx = (pose.ty / 100) * vh;
-    if (this.isMobile) txPx = 0;
+    var scale = pose.scale;
+    if (this.isMobile) {
+      txPx = 0;
+      // Spec section 7: phone scaled to ~60% of viewport width on mobile,
+      // and raised an extra 10vh once past the intro pose to leave room
+      // for the fixed legend card at the bottom instead of overlapping it.
+      scale = pose.scale * ((0.6 * vw) / 300);
+      if (pastIntro) tyPx -= 0.10 * vh;
+    }
     var t = "translate3d(" + txPx.toFixed(2) + "px," + tyPx.toFixed(2) + "px,0) " +
-      "scale(" + pose.scale.toFixed(4) + ") " +
+      "scale(" + scale.toFixed(4) + ") " +
       "rotateX(" + pose.rx.toFixed(2) + "deg) " +
       "rotateY(" + pose.ry.toFixed(2) + "deg) " +
       "rotateZ(" + pose.rz.toFixed(2) + "deg)";
@@ -201,7 +209,7 @@
 
     // Hero legend / intro pose
     if (p <= INTRO_END) {
-      this._applyTransform(POSES[0], vh, vw);
+      this._applyTransform(POSES[0], vh, vw, false);
       this._setScreen("g");
       if (this.heroEl) this.heroEl.style.opacity = "1";
       this._hideOtherLegends(null);
@@ -217,7 +225,7 @@
         var transitionT = Math.min(localT / 0.40, 1);
         var eased = easeInOutCubic(transitionT);
         var pose = lerpPose(POSES[i - 1], POSES[i], eased);
-        this._applyTransform(pose, vh, vw);
+        this._applyTransform(pose, vh, vw, true);
 
         var screenKey = localT < 0.30 ? null : screenForSegment(i, localT);
         if (screenKey) this._setScreen(screenKey);
@@ -248,6 +256,12 @@
 
   Stage.prototype._updateMobileCard = function (i, opacity, content) {
     if (!this.mobileCard || !this.isMobile) return;
+    // Once the viewport has scrolled fully past the sticky stage, this fixed
+    // card must not linger on top of the sections that follow (recursos etc).
+    if (this.outer.getBoundingClientRect().bottom <= 0) {
+      this.mobileCard.style.opacity = "0";
+      return;
+    }
     if (i === 0 || !content) {
       this.mobileCard.style.opacity = "0";
       return;
