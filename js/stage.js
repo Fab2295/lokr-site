@@ -76,12 +76,11 @@
     this.reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     this.isMobile = window.matchMedia("(max-width: 820px)").matches;
 
-    // Smoothed progress: raw scroll sets a target, and a persistent rAF loop
-    // eases the rendered value toward it, so quick trackpad bursts don't
-    // snap poses instantly — this is what makes the stage feel less "sensitive".
-    this._targetP = 0;
+    // Render directly as a function of scroll position (rAF-throttled, not
+    // delayed/eased) — the same approach real scroll-driven product pages
+    // use: the frame always matches where the user physically is, so it
+    // never "catches up" after they've already stopped scrolling.
     this._p = 0;
-    this._looping = false;
     this._raf = null;
     this._bind();
     this._renderStatic(0);
@@ -90,18 +89,21 @@
   Stage.prototype._bind = function () {
     var self = this;
     var onScroll = function () {
-      self._targetP = self._computeRawP();
-      self._ensureLoop();
+      if (self._raf) return;
+      self._raf = window.requestAnimationFrame(function () {
+        self._raf = null;
+        self._p = self._computeRawP();
+        self.render(self._p);
+      });
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", function () {
       self.isMobile = window.matchMedia("(max-width: 820px)").matches;
-      self._targetP = self._computeRawP();
-      self._ensureLoop();
+      self._p = self._computeRawP();
+      self.render(self._p);
     });
     document.addEventListener("lokr:lang", function () { self.render(self._p); });
-    this._targetP = this._computeRawP();
-    this._p = this._targetP;
+    this._p = this._computeRawP();
     this.render(this._p);
   };
 
@@ -112,26 +114,7 @@
     return Math.max(0, Math.min(1, p));
   };
 
-  Stage.prototype._ensureLoop = function () {
-    if (this._looping) return;
-    this._looping = true;
-    var self = this;
-    var step = function () {
-      var diff = self._targetP - self._p;
-      if (Math.abs(diff) < 0.0006) {
-        self._p = self._targetP;
-        self.render(self._p);
-        self._looping = false;
-        return;
-      }
-      self._p += diff * 0.18;
-      self.render(self._p);
-      self._raf = window.requestAnimationFrame(step);
-    };
-    this._raf = window.requestAnimationFrame(step);
-  };
-
-  Stage.prototype._setScreen = function (key) {
+Stage.prototype._setScreen = function (key) {
     if (!key || key === this.currentScreen) return;
     var prev = this.screenImgs[this.currentScreen];
     var next = this.screenImgs[key];
