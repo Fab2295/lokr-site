@@ -10,10 +10,9 @@
   display: flex;
   flex-direction: column;
   gap: 34px;
-  max-width: 760px;
 }
 .legal-sections h2 { font-size: 20px; font-weight: 700; margin-bottom: 10px; letter-spacing: -.02em; }
-.legal-sections p { color: var(--text-2); }
+.legal-sections p { color: var(--text-2); max-width: 760px; }
 
 .support-layout {
   padding-top: 40px;
