@@ -107,6 +107,7 @@
       '<p class="footer-text">' + t.footer.copyright + " · " + t.footer.tagline + "</p>" +
       '<div class="foot-links footer-text">' +
       '<a href="privacidade.html">' + (lang === "pt" ? "Privacidade" : lang === "es" ? "Privacidad" : "Privacy") + "</a>" +
+      '<a href="termos.html">' + (lang === "pt" ? "Termos de uso" : lang === "es" ? "Términos de uso" : "Terms of use") + "</a>" +
       '<a href="suporte.html">' + t.nav.suporte + "</a>" +
       '<a href="mailto:lokr.security.support@gmail.com">lokr.security.support@gmail.com</a>' +
       "</div>" +

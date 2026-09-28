@@ -39,8 +39,67 @@ window.LOKR_I18N_LEGAL = {
           p: "O Pro é vendido pela App Store, via StoreKit. Cartão e dados de pagamento ficam com a Apple; o Lokr+ nunca vê esses dados, só recebe a confirmação de que a compra aconteceu."
         },
         {
-          h: "9. Mudanças e contato",
+          h: "9. Seus direitos na União Europeia (RGPD)",
+          p: "Como o Lokr+ não coleta, armazena ou transmite dados pessoais para nenhum servidor nosso, não há praticamente nada sobre você em nossos sistemas para acessar, corrigir, apagar ou portar — os dados do seu cofre existem só no seu aparelho, sob seu controle. A única informação que sai do aparelho é o trecho anônimo de hash descrito na seção 6, que não identifica você e não fica guardado conosco. Ainda assim, se você mora no Espaço Econômico Europeu, Reino Unido ou Suíça, você tem os direitos garantidos pelo RGPD — acesso, retificação, apagamento, portabilidade, restrição e oposição ao tratamento. Para exercê-los ou tirar dúvidas, escreva para lokr.security.support@gmail.com; você também pode reclamar à autoridade de proteção de dados do seu país a qualquer momento."
+        },
+        {
+          h: "10. Seus direitos na Califórnia e nos EUA (CCPA/CPRA)",
+          p: "O Lokr+ nunca vende nem compartilha dados pessoais com terceiros — não há dados pessoais nos nossos servidores para vender, porque não existe servidor guardando os seus dados. Se você é residente da Califórnia, tem direito de saber quais informações são coletadas (nenhuma, além do que você mesmo nos envia por e-mail ao pedir suporte), de pedir a exclusão delas e de não sofrer discriminação por exercer esses direitos. Como não coletamos nem vendemos informação pessoal, essas garantias já estão atendidas por padrão; para qualquer pedido formal, escreva para lokr.security.support@gmail.com."
+        },
+        {
+          h: "11. Mudanças e contato",
           p: "Se esta política mudar, a data no topo desta página muda junto. Dúvidas, pedidos ou preocupações: lokr.security.support@gmail.com."
+        }
+      ]
+    },
+    terms: {
+      eyebrow: "Termos de uso · 27 de setembro de 2026",
+      title: "As regras do jogo, em poucas palavras.",
+      intro: "Ao baixar ou usar o Lokr+, você concorda com estes termos. Como o app guarda tudo só no seu aparelho, boa parte deles é sobre o que isso significa pra sua responsabilidade sobre os próprios dados.",
+      sections: [
+        {
+          h: "1. Aceitação dos termos",
+          p: "Ao instalar ou usar o Lokr+, você concorda com estes Termos de Uso e com a nossa Política de Privacidade. Se você não concordar com algum ponto, não instale ou desinstale o app."
+        },
+        {
+          h: "2. O que é o Lokr+",
+          p: "O Lokr+ é um gerenciador de senhas que funciona inteiramente no seu iPhone, sem conta, sem servidor e sem sincronização automática entre aparelhos. Tudo o que o app faz com seus dados está descrito na Política de Privacidade."
+        },
+        {
+          h: "3. Você é responsável pelos seus dados",
+          p: "Não existe recuperação de código nem backup automático na nuvem — isso é intencional, por segurança. Se você esquecer o código do Lokr+, apagar o app sem exportar antes, ou exceder o limite de tentativas erradas, os dados do cofre são perdidos de forma permanente e não podem ser recuperados por nós. Fazer backups (exportar .lokr ou CSV) periodicamente é responsabilidade sua."
+        },
+        {
+          h: "4. Planos Grátis e Pro",
+          p: "O plano Pro é vendido através da App Store, via StoreKit, e está sujeito aos Termos de Serviço de Mídia da Apple. Cobranças, renovações e reembolsos são processados e regidos pela Apple — para pedir reembolso, use o suporte da própria App Store."
+        },
+        {
+          h: "5. Uso permitido",
+          p: "O Lokr+ é para uso pessoal e lícito. É proibido usar o app para fins ilegais, tentar contornar seus mecanismos de segurança, ou realizar engenharia reversa além do que a lei do seu país permitir expressamente."
+        },
+        {
+          h: "6. Propriedade intelectual",
+          p: "A marca Lokr+, o design do app e o código-fonte pertencem ao desenvolvedor. Usar o app não te dá nenhum direito de propriedade sobre eles, além da licença de uso pessoal concedida por estes termos."
+        },
+        {
+          h: "7. Isenção de garantias",
+          p: "O Lokr+ é fornecido \"como está\". Fazemos o possível para manter o app seguro e funcionando corretamente, mas não garantimos disponibilidade ininterrupta nem ausência total de falhas."
+        },
+        {
+          h: "8. Limitação de responsabilidade",
+          p: "Na máxima extensão permitida por lei, o desenvolvedor do Lokr+ não se responsabiliza por perda de dados, danos indiretos ou consequenciais decorrentes do uso do app — especialmente perdas ligadas a esquecimento de código ou falta de backup, cobertas na seção 3."
+        },
+        {
+          h: "9. Idade mínima",
+          p: "O Lokr+ é destinado a quem tem idade legal para consentir com estes termos sozinho, ou consentimento de um responsável quando a lei local exigir. Não coletamos intencionalmente dados de crianças, e como não há conta nem servidor, não há dados de ninguém — criança ou adulto — armazenados por nós."
+        },
+        {
+          h: "10. Lei aplicável",
+          p: "Estes termos são regidos pelas leis do Brasil, sem prejuízo dos direitos de proteção ao consumidor garantidos pela lei do seu país de residência, quando aplicável — inclusive para usuários na União Europeia, Reino Unido e Estados Unidos."
+        },
+        {
+          h: "11. Mudanças e contato",
+          p: "Se estes termos mudarem, a data no topo desta página muda junto. Dúvidas: lokr.security.support@gmail.com."
         }
       ]
     },
@@ -123,8 +182,67 @@ window.LOKR_I18N_LEGAL = {
           p: "Pro is sold through the App Store, via StoreKit. Card and payment details stay with Apple; Lokr+ never sees them, it only receives confirmation that the purchase happened."
         },
         {
-          h: "9. Changes and contact",
+          h: "9. Your rights in the European Union (GDPR)",
+          p: "Because Lokr+ doesn't collect, store, or transmit personal data to any server of ours, there's essentially nothing about you on our systems to access, correct, erase, or port — your vault's data exists only on your device, under your control. The one piece of information that leaves the device is the anonymous hash fragment described in section 6, which doesn't identify you and isn't stored by us. Still, if you're based in the European Economic Area, the UK, or Switzerland, you have the rights guaranteed by the GDPR — access, rectification, erasure, portability, restriction, and objection to processing. To exercise them or ask questions, write to lokr.security.support@gmail.com; you can also complain to your country's data protection authority at any time."
+        },
+        {
+          h: "10. Your rights in California and the U.S. (CCPA/CPRA)",
+          p: "Lokr+ never sells or shares personal data with third parties — there's no personal data on our servers to sell, because there's no server holding your data. If you're a California resident, you have the right to know what information is collected (none, beyond what you send us yourself by email when asking for support), to request its deletion, and to not be discriminated against for exercising these rights. Since we don't collect or sell personal information, these guarantees are already met by default; for any formal request, write to lokr.security.support@gmail.com."
+        },
+        {
+          h: "11. Changes and contact",
           p: "If this policy changes, the date at the top of this page changes with it. Questions, requests, or concerns: lokr.security.support@gmail.com."
+        }
+      ]
+    },
+    terms: {
+      eyebrow: "Terms of use · September 27, 2026",
+      title: "The rules of the game, in a few words.",
+      intro: "By downloading or using Lokr+, you agree to these terms. Since the app keeps everything only on your device, a good chunk of them is about what that means for your responsibility over your own data.",
+      sections: [
+        {
+          h: "1. Accepting these terms",
+          p: "By installing or using Lokr+, you agree to these Terms of Use and to our Privacy Policy. If you don't agree with any part of them, don't install the app, or uninstall it."
+        },
+        {
+          h: "2. What Lokr+ is",
+          p: "Lokr+ is a password manager that runs entirely on your iPhone, with no account, no server, and no automatic sync between devices. Everything the app does with your data is described in the Privacy Policy."
+        },
+        {
+          h: "3. You're responsible for your data",
+          p: "There's no code recovery and no automatic cloud backup — that's intentional, for security. If you forget your Lokr+ code, delete the app without exporting first, or go over the limit of wrong attempts, the vault's data is permanently lost and can't be recovered by us. Making periodic backups (exporting a .lokr file or CSV) is your responsibility."
+        },
+        {
+          h: "4. Free and Pro plans",
+          p: "The Pro plan is sold through the App Store, via StoreKit, and is subject to Apple's Media Services Terms. Charges, renewals, and refunds are processed and governed by Apple — to request a refund, use the App Store's own support."
+        },
+        {
+          h: "5. Permitted use",
+          p: "Lokr+ is for personal, lawful use. Using the app for illegal purposes, trying to circumvent its security mechanisms, or reverse-engineering it beyond what your local law expressly allows is prohibited."
+        },
+        {
+          h: "6. Intellectual property",
+          p: "The Lokr+ brand, the app's design, and its source code belong to the developer. Using the app doesn't grant you any ownership rights over them, beyond the personal-use license granted by these terms."
+        },
+        {
+          h: "7. Disclaimer of warranties",
+          p: "Lokr+ is provided \"as is.\" We do our best to keep the app secure and working correctly, but we don't guarantee uninterrupted availability or a complete absence of bugs."
+        },
+        {
+          h: "8. Limitation of liability",
+          p: "To the maximum extent permitted by law, the Lokr+ developer isn't liable for data loss or indirect or consequential damages arising from using the app — especially losses tied to a forgotten code or a missing backup, covered in section 3."
+        },
+        {
+          h: "9. Minimum age",
+          p: "Lokr+ is meant for people who are legally old enough to agree to these terms on their own, or who have a guardian's consent where local law requires it. We don't knowingly collect data from children, and since there's no account or server, there's no data — from a child or an adult — stored by us."
+        },
+        {
+          h: "10. Governing law",
+          p: "These terms are governed by the laws of Brazil, without prejudice to the consumer-protection rights guaranteed by the law of your country of residence, where applicable — including for users in the European Union, the United Kingdom, and the United States."
+        },
+        {
+          h: "11. Changes and contact",
+          p: "If these terms change, the date at the top of this page changes with them. Questions: lokr.security.support@gmail.com."
         }
       ]
     },
@@ -207,8 +325,67 @@ window.LOKR_I18N_LEGAL = {
           p: "El Pro se vende a través de la App Store, vía StoreKit. Los datos de la tarjeta y el pago se quedan con Apple; Lokr+ nunca los ve, solo recibe la confirmación de que la compra ocurrió."
         },
         {
-          h: "9. Cambios y contacto",
+          h: "9. Tus derechos en la Unión Europea (RGPD)",
+          p: "Como Lokr+ no recopila, almacena ni transmite datos personales a ningún servidor nuestro, prácticamente no hay nada sobre ti en nuestros sistemas para acceder, corregir, borrar o portar — los datos de tu caja fuerte existen solo en tu dispositivo, bajo tu control. La única información que sale del dispositivo es el fragmento anónimo de hash descrito en la sección 6, que no te identifica y no lo guardamos nosotros. Aun así, si resides en el Espacio Económico Europeo, el Reino Unido o Suiza, tienes los derechos garantizados por el RGPD — acceso, rectificación, supresión, portabilidad, limitación y oposición al tratamiento. Para ejercerlos o resolver dudas, escribe a lokr.security.support@gmail.com; también puedes reclamar ante la autoridad de protección de datos de tu país en cualquier momento."
+        },
+        {
+          h: "10. Tus derechos en California y EE. UU. (CCPA/CPRA)",
+          p: "Lokr+ nunca vende ni comparte datos personales con terceros — no hay datos personales en nuestros servidores para vender, porque no existe un servidor que guarde tus datos. Si eres residente de California, tienes derecho a saber qué información se recopila (ninguna, aparte de lo que tú mismo nos envías por correo al pedir soporte), a solicitar su eliminación y a no sufrir discriminación por ejercer estos derechos. Como no recopilamos ni vendemos información personal, estas garantías ya se cumplen por defecto; para cualquier solicitud formal, escribe a lokr.security.support@gmail.com."
+        },
+        {
+          h: "11. Cambios y contacto",
           p: "Si esta política cambia, la fecha en la parte superior de esta página cambia con ella. Preguntas, solicitudes o inquietudes: lokr.security.support@gmail.com."
+        }
+      ]
+    },
+    terms: {
+      eyebrow: "Términos de uso · 27 de septiembre de 2026",
+      title: "Las reglas del juego, en pocas palabras.",
+      intro: "Al descargar o usar Lokr+, aceptas estos términos. Como la app guarda todo solo en tu dispositivo, buena parte de ellos trata sobre lo que eso significa para tu responsabilidad sobre tus propios datos.",
+      sections: [
+        {
+          h: "1. Aceptación de los términos",
+          p: "Al instalar o usar Lokr+, aceptas estos Términos de Uso y nuestra Política de Privacidad. Si no estás de acuerdo con algún punto, no instales la app o desinstálala."
+        },
+        {
+          h: "2. Qué es Lokr+",
+          p: "Lokr+ es un gestor de contraseñas que funciona enteramente en tu iPhone, sin cuenta, sin servidor y sin sincronización automática entre dispositivos. Todo lo que la app hace con tus datos está descrito en la Política de Privacidad."
+        },
+        {
+          h: "3. Eres responsable de tus datos",
+          p: "No existe recuperación de código ni copia de seguridad automática en la nube — es intencional, por seguridad. Si olvidas el código de Lokr+, borras la app sin exportar antes, o superas el límite de intentos fallidos, los datos de la caja fuerte se pierden de forma permanente y no podemos recuperarlos. Hacer copias de seguridad periódicas (exportar un archivo .lokr o CSV) es responsabilidad tuya."
+        },
+        {
+          h: "4. Planes Gratis y Pro",
+          p: "El plan Pro se vende a través de la App Store, vía StoreKit, y está sujeto a los Términos de Servicios de Medios de Apple. Los cobros, renovaciones y reembolsos son procesados y regidos por Apple — para pedir un reembolso, usa el soporte de la propia App Store."
+        },
+        {
+          h: "5. Uso permitido",
+          p: "Lokr+ es para uso personal y lícito. Está prohibido usar la app con fines ilegales, intentar eludir sus mecanismos de seguridad, o realizar ingeniería inversa más allá de lo que la ley de tu país permita expresamente."
+        },
+        {
+          h: "6. Propiedad intelectual",
+          p: "La marca Lokr+, el diseño de la app y su código fuente pertenecen al desarrollador. Usar la app no te otorga ningún derecho de propiedad sobre ellos, más allá de la licencia de uso personal concedida por estos términos."
+        },
+        {
+          h: "7. Exención de garantías",
+          p: "Lokr+ se proporciona \"tal cual\". Hacemos lo posible por mantener la app segura y funcionando correctamente, pero no garantizamos disponibilidad ininterrumpida ni la ausencia total de fallos."
+        },
+        {
+          h: "8. Limitación de responsabilidad",
+          p: "En la máxima medida permitida por la ley, el desarrollador de Lokr+ no se hace responsable de la pérdida de datos ni de daños indirectos o consecuentes derivados del uso de la app — especialmente pérdidas ligadas a olvidar el código o no tener una copia de seguridad, cubiertas en la sección 3."
+        },
+        {
+          h: "9. Edad mínima",
+          p: "Lokr+ está dirigido a quienes tienen edad legal para aceptar estos términos por sí mismos, o cuentan con el consentimiento de un tutor cuando la ley local lo exija. No recopilamos intencionalmente datos de menores, y como no hay cuenta ni servidor, no guardamos datos de nadie — menor o adulto."
+        },
+        {
+          h: "10. Ley aplicable",
+          p: "Estos términos se rigen por las leyes de Brasil, sin perjuicio de los derechos de protección al consumidor garantizados por la ley de tu país de residencia, cuando corresponda — incluso para usuarios en la Unión Europea, el Reino Unido y los Estados Unidos."
+        },
+        {
+          h: "11. Cambios y contacto",
+          p: "Si estos términos cambian, la fecha en la parte superior de esta página cambia con ellos. Preguntas: lokr.security.support@gmail.com."
         }
       ]
     },

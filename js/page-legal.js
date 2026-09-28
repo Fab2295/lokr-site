@@ -17,6 +17,21 @@
     document.addEventListener("lokr:lang", render);
   }
 
+  function renderTerms() {
+    var render = function () {
+      var t = window.LokrSite.tLegal.terms;
+      document.querySelector("[data-t-eyebrow]").textContent = t.eyebrow;
+      document.querySelector("[data-t-title]").textContent = t.title;
+      document.querySelector("[data-t-intro]").textContent = t.intro;
+      document.querySelector("[data-t-sections]").innerHTML = t.sections.map(function (s) {
+        return "<div><h2>" + s.h + "</h2><p>" + s.p + "</p></div>";
+      }).join("");
+      document.title = t.title + " — Lokr+";
+    };
+    render();
+    document.addEventListener("lokr:lang", render);
+  }
+
   function renderSupport() {
     var render = function () {
       var t = window.LokrSite.tLegal.support;
@@ -58,5 +73,5 @@
     document.addEventListener("lokr:lang", render);
   }
 
-  window.LokrPageLegal = { renderPrivacy: renderPrivacy, renderSupport: renderSupport };
+  window.LokrPageLegal = { renderPrivacy: renderPrivacy, renderTerms: renderTerms, renderSupport: renderSupport };
 })();
