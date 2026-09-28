@@ -47,7 +47,8 @@
   inset: 0;
   z-index: 3;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  padding-top: 14vh;
   pointer-events: none;
 }
 .stage-hero .wrap { max-width: min(920px, 92vw); }

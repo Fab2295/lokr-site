@@ -3,6 +3,7 @@ window.LOKR_I18N = {
   pt: {
     nav: { recursos: "Recursos", isca: "Cofre isca", planos: "Planos", suporte: "Suporte" },
     download: "Baixar",
+    comingSoon: "Em breve na App Store.",
     hero: {
       eyebrow: "iPhone · sem conta · sem nuvem",
       titleA: "Suas senhas,",
@@ -109,6 +110,7 @@ window.LOKR_I18N = {
   en: {
     nav: { recursos: "Features", isca: "Decoy vault", planos: "Plans", suporte: "Support" },
     download: "Download",
+    comingSoon: "Coming soon to the App Store.",
     hero: {
       eyebrow: "iPhone · no account · no cloud",
       titleA: "Your passwords,",
@@ -215,6 +217,7 @@ window.LOKR_I18N = {
   es: {
     nav: { recursos: "Funciones", isca: "Caja señuelo", planos: "Planes", suporte: "Soporte" },
     download: "Descargar",
+    comingSoon: "Muy pronto en la App Store.",
     hero: {
       eyebrow: "iPhone · sin cuenta · sin nube",
       titleA: "Tus contraseñas,",

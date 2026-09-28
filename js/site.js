@@ -116,6 +116,29 @@
     decorateInternalLinks(lang);
   }
 
+  var toastTimer = null;
+  function showToast(message) {
+    var el = document.querySelector("[data-toast]");
+    if (!el) {
+      el = document.createElement("div");
+      el.className = "toast";
+      el.setAttribute("data-toast", "");
+      document.body.appendChild(el);
+    }
+    el.textContent = message;
+    el.classList.add("visible");
+    if (toastTimer) window.clearTimeout(toastTimer);
+    toastTimer = window.setTimeout(function () { el.classList.remove("visible"); }, 2600);
+  }
+
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest && e.target.closest("[data-appstore-link]");
+    if (!btn) return;
+    e.preventDefault();
+    var t = window.LokrSite && window.LokrSite.t;
+    showToast(t ? t.comingSoon : "Coming soon.");
+  });
+
   function setLang(lang, opts) {
     opts = opts || {};
     if (SUPPORTED.indexOf(lang) === -1) lang = "en";
