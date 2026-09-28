@@ -167,7 +167,7 @@
 .stage-legend.side-bottom {
   left: 50%;
   top: auto;
-  bottom: 8vh;
+  bottom: 5vh;
   transform: translateX(-50%);
   text-align: center;
   max-width: 560px;

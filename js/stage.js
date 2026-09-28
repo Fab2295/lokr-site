@@ -10,7 +10,7 @@
     { tx: 1, rx: 0,  ry: 360, rz: 0,   scale: 1,    ty: 0 },    // 4 ajustes
     { tx: -1,rx: 0,  ry: 360, rz: 0,   scale: 1,    ty: 0 },    // 5 cofre isca
     { tx: 1, rx: 0,  ry: 360, rz: 0,   scale: 1,    ty: 0 },    // 6 registro
-    { tx: 0, rx: 0,  ry: 360, rz: 0,   scale: 0.64, ty: -12 }   // 7 final
+    { tx: 0, rx: 0,  ry: 360, rz: 0,   scale: 0.58, ty: -20 }   // 7 final
   ];
 
   var SEGMENT_COUNT = 7;
