@@ -149,8 +149,12 @@
       // Spec section 7: phone scaled to ~60% of viewport width on mobile,
       // and raised an extra 10vh once past the intro pose to leave room
       // for the fixed legend card at the bottom instead of overlapping it.
+      // The intro pose itself needs a bigger lift: its ty:+20vh was tuned
+      // for a vertically-centered hero — now that the hero is anchored near
+      // the top (see .stage-hero mobile override), that same push leaves a
+      // huge empty gap between the title and the phone.
       scale = pose.scale * ((0.6 * vw) / 300);
-      if (pastIntro) tyPx -= 0.10 * vh;
+      tyPx -= (pastIntro ? 0.10 : 0.20) * vh;
     }
     var t = "translate3d(" + txPx.toFixed(2) + "px," + tyPx.toFixed(2) + "px,0) " +
       "scale(" + scale.toFixed(4) + ") " +
