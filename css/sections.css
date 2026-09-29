@@ -1,6 +1,6 @@
 /* Lokr+ site — content sections below the stage (spec section 4 & 9) */
 
-section.block { padding-top: 120px; padding-bottom: 120px; }
+section.block { padding-top: clamp(48px, 8vw, 96px); padding-bottom: clamp(48px, 8vw, 96px); }
 
 .section-head { margin-bottom: 44px; }
 .section-head .eyebrow { display: block; margin-bottom: 14px; }

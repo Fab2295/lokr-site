@@ -268,18 +268,6 @@ class Stage3D {
 
   _bind() {
     const self = this;
-    // Direct scroll->render mapping (rAF-throttled, not eased/delayed) —
-    // matches how real scroll-driven product pages behave: the frame always
-    // reflects where the user physically is, with no catch-up lag once they
-    // stop scrolling.
-    window.addEventListener("scroll", () => {
-      if (self._raf) return;
-      self._raf = window.requestAnimationFrame(() => {
-        self._raf = null;
-        self._p = self._computeRawP();
-        self.render(self._p);
-      });
-    }, { passive: true });
     window.addEventListener("resize", () => {
       self.isMobile = window.matchMedia("(max-width: 820px)").matches;
       self._resizeRenderer();
@@ -291,6 +279,36 @@ class Stage3D {
       self._loadTextures(e.detail.lang);
       self.render(self._p);
     });
+
+    // Render continuously (rAF loop) while the stage is anywhere near the
+    // viewport, rather than only in response to 'scroll' events. A plain
+    // scroll-event listener (even rAF-throttled) can lag behind a fast
+    // momentum-scroll fling on iOS Safari — scroll events get coalesced
+    // during the fling, so the pose and the fixed-position mobile legend
+    // card would render a stale frame (a dark, near-opaque card stuck over
+    // the sections below it, reading as a black screen / missing sections)
+    // until the next scroll event happened to fire. Gating the loop with
+    // IntersectionObserver keeps it off (battery/CPU) outside the stage,
+    // and forces one final authoritative render the instant the stage
+    // enters or leaves view, so overlays can never get stuck stale.
+    const loop = () => {
+      self._p = self._computeRawP();
+      self.render(self._p);
+      self._raf = window.requestAnimationFrame(loop);
+    };
+    const observer = new IntersectionObserver((entries) => {
+      const active = entries.some((entry) => entry.isIntersecting);
+      if (active && self._raf === null) {
+        self._raf = window.requestAnimationFrame(loop);
+      } else if (!active && self._raf !== null) {
+        window.cancelAnimationFrame(self._raf);
+        self._raf = null;
+        self._p = self._computeRawP();
+        self.render(self._p);
+      }
+    });
+    observer.observe(this.outer);
+
     this._p = this._computeRawP();
     this.render(this._p);
   }
