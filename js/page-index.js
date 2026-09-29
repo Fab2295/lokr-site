@@ -113,12 +113,13 @@ class Stage3D {
     this.desiredKey = "g";
     this.appliedKey = null;
     this.textures = {};
+    this._loadingKeys = new Set();
 
     this._p = 0;
     this._raf = null;
 
     this._initThree();
-    this._loadTextures(window.LokrSite.lang);
+    this._loadTexture(this.desiredKey, window.LokrSite.lang);
     this._bind();
   }
 
@@ -207,7 +208,16 @@ class Stage3D {
     // Loaded async; the screen/island above don't depend on it and render
     // immediately with placeholder sizing, then get resized/repositioned to
     // match the model's real dimensions once it's known.
+    // The glb ships Draco-compressed geometry + WebP textures (gltf-transform
+    // optimize) — the original, as downloaded from Sketchfab, carried 26
+    // uncompressed 2048x2048 PBR textures (~580MB decoded on the GPU for a
+    // small decorative phone), which crashed real iOS Safari under memory
+    // pressure even though it rendered fine on desktop-class GPUs. The
+    // decoder is fetched once from the same three.js CDN build and cached.
+    const dracoLoader = new THREE.DRACOLoader();
+    dracoLoader.setDecoderPath("https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/libs/draco/");
     const gltfLoader = new THREE.GLTFLoader();
+    gltfLoader.setDRACOLoader(dracoLoader);
     gltfLoader.load("assets/model/iphone17.glb", (gltf) => {
       const body = gltf.scene;
       const box = new THREE.Box3().setFromObject(body);
@@ -244,21 +254,25 @@ class Stage3D {
     this._renderFrame();
   }
 
-  _loadTextures(lang) {
-    const set = imgSet(lang);
+  // Loaded on demand (as each segment first needs it) rather than all 8 up
+  // front — keeps peak GPU texture memory down, which matters a lot next to
+  // the already-heavy 3D model.
+  _loadTexture(key, lang) {
+    if (this.textures[key] || this._loadingKeys.has(key)) return;
+    this._loadingKeys.add(key);
+    const set = imgSet(lang || window.LokrSite.lang);
     const loader = new THREE.TextureLoader();
-    SCREEN_ORDER.forEach((key) => {
-      loader.load("assets/img/" + set + "/" + SCREEN_FILES[key], (tex) => {
-        tex.encoding = THREE.sRGBEncoding;
-        this.textures[key] = tex;
-        if (key === this.desiredKey) this._applyScreenTexture(key);
-      });
+    loader.load("assets/img/" + set + "/" + SCREEN_FILES[key], (tex) => {
+      tex.encoding = THREE.sRGBEncoding;
+      this.textures[key] = tex;
+      this._loadingKeys.delete(key);
+      if (key === this.desiredKey) this._applyScreenTexture(key);
     });
   }
 
   _applyScreenTexture(key) {
     const tex = this.textures[key];
-    if (!tex) return;
+    if (!tex) { this._loadTexture(key); return; }
     this.frontMat.map = tex;
     this.frontMat.color.set(0xffffff);
     this.frontMat.needsUpdate = true;
@@ -268,18 +282,6 @@ class Stage3D {
 
   _bind() {
     const self = this;
-    // Direct scroll->render mapping (rAF-throttled, not eased/delayed) —
-    // matches how real scroll-driven product pages behave: the frame always
-    // reflects where the user physically is, with no catch-up lag once they
-    // stop scrolling.
-    window.addEventListener("scroll", () => {
-      if (self._raf) return;
-      self._raf = window.requestAnimationFrame(() => {
-        self._raf = null;
-        self._p = self._computeRawP();
-        self.render(self._p);
-      });
-    }, { passive: true });
     window.addEventListener("resize", () => {
       self.isMobile = window.matchMedia("(max-width: 820px)").matches;
       self._resizeRenderer();
@@ -287,10 +289,47 @@ class Stage3D {
       self.render(self._p);
     });
     document.addEventListener("lokr:lang", (e) => {
+      // Dispose the old GPU textures before dropping their references —
+      // simply reassigning self.textures leaked one full set of textures
+      // per language switch, since three.js doesn't free GPU resources on
+      // JS garbage collection alone.
+      Object.values(self.textures).forEach((tex) => tex.dispose());
       self.textures = {};
-      self._loadTextures(e.detail.lang);
+      self._loadingKeys.clear();
+      self.appliedKey = null;
+      self._loadTexture(self.desiredKey, e.detail.lang);
       self.render(self._p);
     });
+
+    // Render continuously (rAF loop) while the stage is anywhere near the
+    // viewport, rather than only in response to 'scroll' events. A plain
+    // scroll-event listener (even rAF-throttled) can lag behind a fast
+    // momentum-scroll fling on iOS Safari — scroll events get coalesced
+    // during the fling, so the pose and the fixed-position mobile legend
+    // card would render a stale frame (a dark, near-opaque card stuck over
+    // the sections below it, reading as a black screen / missing sections)
+    // until the next scroll event happened to fire. Gating the loop with
+    // IntersectionObserver keeps it off (battery/CPU) outside the stage,
+    // and forces one final authoritative render the instant the stage
+    // enters or leaves view, so overlays can never get stuck stale.
+    const loop = () => {
+      self._p = self._computeRawP();
+      self.render(self._p);
+      self._raf = window.requestAnimationFrame(loop);
+    };
+    const observer = new IntersectionObserver((entries) => {
+      const active = entries.some((entry) => entry.isIntersecting);
+      if (active && self._raf === null) {
+        self._raf = window.requestAnimationFrame(loop);
+      } else if (!active && self._raf !== null) {
+        window.cancelAnimationFrame(self._raf);
+        self._raf = null;
+        self._p = self._computeRawP();
+        self.render(self._p);
+      }
+    });
+    observer.observe(this.outer);
+
     this._p = this._computeRawP();
     this.render(this._p);
   }
