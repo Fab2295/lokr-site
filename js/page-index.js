@@ -113,12 +113,13 @@ class Stage3D {
     this.desiredKey = "g";
     this.appliedKey = null;
     this.textures = {};
+    this._loadingKeys = new Set();
 
     this._p = 0;
     this._raf = null;
 
     this._initThree();
-    this._loadTextures(window.LokrSite.lang);
+    this._loadTexture(this.desiredKey, window.LokrSite.lang);
     this._bind();
   }
 
@@ -244,21 +245,25 @@ class Stage3D {
     this._renderFrame();
   }
 
-  _loadTextures(lang) {
-    const set = imgSet(lang);
+  // Loaded on demand (as each segment first needs it) rather than all 8 up
+  // front — keeps peak GPU texture memory down, which matters a lot next to
+  // the already-heavy 3D model.
+  _loadTexture(key, lang) {
+    if (this.textures[key] || this._loadingKeys.has(key)) return;
+    this._loadingKeys.add(key);
+    const set = imgSet(lang || window.LokrSite.lang);
     const loader = new THREE.TextureLoader();
-    SCREEN_ORDER.forEach((key) => {
-      loader.load("assets/img/" + set + "/" + SCREEN_FILES[key], (tex) => {
-        tex.encoding = THREE.sRGBEncoding;
-        this.textures[key] = tex;
-        if (key === this.desiredKey) this._applyScreenTexture(key);
-      });
+    loader.load("assets/img/" + set + "/" + SCREEN_FILES[key], (tex) => {
+      tex.encoding = THREE.sRGBEncoding;
+      this.textures[key] = tex;
+      this._loadingKeys.delete(key);
+      if (key === this.desiredKey) this._applyScreenTexture(key);
     });
   }
 
   _applyScreenTexture(key) {
     const tex = this.textures[key];
-    if (!tex) return;
+    if (!tex) { this._loadTexture(key); return; }
     this.frontMat.map = tex;
     this.frontMat.color.set(0xffffff);
     this.frontMat.needsUpdate = true;
@@ -275,8 +280,15 @@ class Stage3D {
       self.render(self._p);
     });
     document.addEventListener("lokr:lang", (e) => {
+      // Dispose the old GPU textures before dropping their references —
+      // simply reassigning self.textures leaked one full set of textures
+      // per language switch, since three.js doesn't free GPU resources on
+      // JS garbage collection alone.
+      Object.values(self.textures).forEach((tex) => tex.dispose());
       self.textures = {};
-      self._loadTextures(e.detail.lang);
+      self._loadingKeys.clear();
+      self.appliedKey = null;
+      self._loadTexture(self.desiredKey, e.detail.lang);
       self.render(self._p);
     });
 
