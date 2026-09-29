@@ -208,7 +208,16 @@ class Stage3D {
     // Loaded async; the screen/island above don't depend on it and render
     // immediately with placeholder sizing, then get resized/repositioned to
     // match the model's real dimensions once it's known.
+    // The glb ships Draco-compressed geometry + WebP textures (gltf-transform
+    // optimize) — the original, as downloaded from Sketchfab, carried 26
+    // uncompressed 2048x2048 PBR textures (~580MB decoded on the GPU for a
+    // small decorative phone), which crashed real iOS Safari under memory
+    // pressure even though it rendered fine on desktop-class GPUs. The
+    // decoder is fetched once from the same three.js CDN build and cached.
+    const dracoLoader = new THREE.DRACOLoader();
+    dracoLoader.setDecoderPath("https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/libs/draco/");
     const gltfLoader = new THREE.GLTFLoader();
+    gltfLoader.setDRACOLoader(dracoLoader);
     gltfLoader.load("assets/model/iphone17.glb", (gltf) => {
       const body = gltf.scene;
       const box = new THREE.Box3().setFromObject(body);
