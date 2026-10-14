@@ -483,7 +483,9 @@ function renderPlanos() {
   section.innerHTML = `<div class="section-head"><h2 class="h-section">${t.title}</h2></div><div class="plans-grid">` +
     `<div class="plan-card free"><div class="plan-head"><span class="h-plan">${t.freeLabel}</span><span>${t.freeSub}</span></div><ul class="plan-list">` +
     t.free.map((f) => `<li><span class="tick">✓</span>${f}</li>`).join("") +
-    `</ul></div><div class="plan-card pro"><div class="plan-head"><span class="h-plan">${t.proLabel}</span><span class="pro-badge">${t.proBadge}</span></div><ul class="plan-list">` +
+    `</ul></div><div class="plan-card pro"><div class="plan-head"><span class="h-plan">${t.proLabel}</span></div><div class="pro-plans">` +
+    t.proPlans.map((p) => `<div class="pro-plan-option${p.badge ? " highlight" : ""}">${p.badge ? `<span class="pro-plan-badge">${p.badge}</span>` : ""}<span class="pro-plan-label">${p.label}</span><span class="pro-plan-sub">${p.sub}</span></div>`).join("") +
+    `</div><ul class="plan-list">` +
     t.free.map((f) => `<li><span class="tick">✓</span>${f}</li>`).join("") +
     `</ul><div class="plan-divider"><span>${t.proExtra}</span><span class="rule"></span></div><ul class="plan-list pro-list">` +
     t.pro.map((f) => `<li><span class="tick">✓</span>${f}</li>`).join("") +

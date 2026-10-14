@@ -36,7 +36,7 @@ window.LOKR_I18N = {
       }
     ],
     final: {
-      title: "Pagamento único. Nenhuma mensalidade.",
+      title: "Mensal, anual ou vitalício. Você escolhe.",
       body: "O preço aparece na App Store, na sua moeda.",
       button: "Baixar na App Store"
     },
@@ -66,14 +66,18 @@ window.LOKR_I18N = {
         "Apagar tudo após erros e o registro de acessos funcionam igual nos dois cofres."
       ],
       warning: "Ao ativar o cofre isca, Face ID é desligado: com ele, o cofre real abriria pelo seu rosto e passaria por cima do código de coação.",
-      footerLine: "Pagamento único. Nenhuma mensalidade."
+      footerLine: "Mensal, anual ou vitalício. Você escolhe."
     },
     planos: {
-      title: "Pagamento único. Nenhuma mensalidade.",
+      title: "Mensal, anual ou vitalício. Você escolhe.",
       freeLabel: "Grátis",
       freeSub: "o que você já tem",
       proLabel: "Pro",
-      proBadge: "Pagamento único",
+      proPlans: [
+        { label: "Mensal", sub: "Cobrança todo mês" },
+        { label: "Anual", sub: "Cobrança uma vez por ano" },
+        { label: "Vitalício", sub: "Pagamento único, para sempre", badge: "Sem mensalidade" }
+      ],
       proExtra: "E mais, só no Pro",
       free: [
         "Senhas ilimitadas, sem teto",
@@ -143,7 +147,7 @@ window.LOKR_I18N = {
       }
     ],
     final: {
-      title: "One-time payment. Never a subscription.",
+      title: "Monthly, yearly, or once. You choose.",
       body: "The price shows up on the App Store, in your currency.",
       button: "Download on the App Store"
     },
@@ -173,14 +177,18 @@ window.LOKR_I18N = {
         "Wipe after errors and the access log work the same in both vaults."
       ],
       warning: "Turning on the decoy vault switches Face ID off: with it on, the real vault would open to your face and bypass the duress code.",
-      footerLine: "One-time payment. Never a subscription."
+      footerLine: "Monthly, yearly, or once. You choose."
     },
     planos: {
-      title: "One-time payment. Never a subscription.",
+      title: "Monthly, yearly, or once. You choose.",
       freeLabel: "Free",
       freeSub: "what you already have",
       proLabel: "Pro",
-      proBadge: "One-time payment",
+      proPlans: [
+        { label: "Monthly", sub: "Billed every month" },
+        { label: "Yearly", sub: "Billed once a year" },
+        { label: "Lifetime", sub: "One payment, forever", badge: "No subscription" }
+      ],
       proExtra: "And more, Pro only",
       free: [
         "Unlimited passwords, no cap",
@@ -250,7 +258,7 @@ window.LOKR_I18N = {
       }
     ],
     final: {
-      title: "Pago único. Nunca una suscripción.",
+      title: "Mensual, anual o único. Tú eliges.",
       body: "El precio aparece en la App Store, en tu moneda.",
       button: "Descargar en la App Store"
     },
@@ -280,14 +288,18 @@ window.LOKR_I18N = {
         "Borrar todo tras errores y el registro de accesos funcionan igual en las dos cajas."
       ],
       warning: "Al activar la caja señuelo, Face ID se apaga: con él, la caja real se abriría con tu cara y pasaría por encima del código de coacción.",
-      footerLine: "Pago único. Nunca una suscripción."
+      footerLine: "Mensual, anual o único. Tú eliges."
     },
     planos: {
-      title: "Pago único. Nunca una suscripción.",
+      title: "Mensual, anual o único. Tú eliges.",
       freeLabel: "Gratis",
       freeSub: "lo que ya tienes",
       proLabel: "Pro",
-      proBadge: "Pago único",
+      proPlans: [
+        { label: "Mensual", sub: "Se cobra cada mes" },
+        { label: "Anual", sub: "Se cobra una vez al año" },
+        { label: "Vitalicio", sub: "Pago único, para siempre", badge: "Sin mensualidad" }
+      ],
       proExtra: "Y más, solo en Pro",
       free: [
         "Contraseñas ilimitadas, sin límite",
